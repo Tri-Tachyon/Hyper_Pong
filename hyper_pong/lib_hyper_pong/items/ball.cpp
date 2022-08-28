@@ -9,6 +9,7 @@ void Ball::reset(int newX, int newY, float initDX, float initDY) {
   y = newY;
   dx = initDX;
   dy = initDY;
+  skipNextMoveFrame = false;
 }
 
 Ball::Ball() {
@@ -32,25 +33,12 @@ void Ball::draw() {
 
 }
 
-void Ball::interact(AbstractPassiveItem* item) {
-  std::cout << "interacting with: " << typeid(item).name() << std::endl;
-  if (item->getType() == ItemType::BALL) {
-    //insert ball-to-ball collision
-    return;
-  }
-  if (item->getType() == ItemType::VERTICAL_RACKET) {
-    if (item->getX() - this->getSize() < this->getX() && this->getX() < item->getX() + this->getSize() ) {
-      if (item->getY() - this->getSize() < this->getY() && this->getY() < item->getY() + item->getSize() + this->getSize()) {
-        std::cout << "Collided!" << std::endl;
-        dx = -dx;
-      }
-    }
-    return;
-  }
-
-}
 
 void Ball::move() {
+  if (skipNextMoveFrame) {
+    skipNextMoveFrame = false;
+    return;
+  }
   x += dx;
   y += dy;
 }
@@ -68,4 +56,8 @@ void Ball::multiplySpeed(float koefficient) {
 void Ball::applyVector(float newDX, float newDY){
  dx = newDX;
  dy = newDY;
+}
+void Ball::applyPosition(float newX, float newY) {
+  x = newX;
+  y = newY;
 }
