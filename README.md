@@ -13,7 +13,7 @@ extendible and semantically correct as i am able to!
 Currently, the Hyper Pong is a basic, but essentially functional version of the widely-known game. I am testing this game myself or with my friends, but if you managed to spot any bugs - feel free to report them as an issue.
 
 ## Roadmap
-- [ ] Smoosen collisions in physics engine
+- [x] Smoosen collisions in physics engine
 - [ ] Add score panel
 - [ ] Add the game menu
 - [ ] Fix RayLib dependency
