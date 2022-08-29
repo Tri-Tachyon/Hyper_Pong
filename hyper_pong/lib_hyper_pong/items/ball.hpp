@@ -7,7 +7,6 @@
 
 class Ball : public AbstractActiveItem
 {
-  bool skipNextFrame;
  public:
   Ball();
   ~Ball();
@@ -18,7 +17,7 @@ class Ball : public AbstractActiveItem
   void applyDirection(float angle) override;
   void multiplySpeed(float koefficient) override;
   void applyVector(float newDX, float newDY) override;
-  void interact(AbstractPassiveItem* item) override;
+  void applyPosition(float newX, float newY) override;
 };
 
 
